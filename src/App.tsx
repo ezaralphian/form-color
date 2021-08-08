@@ -17,14 +17,17 @@ const validatorList: Array<errorType> = [
   {
     errorFunction: (value) => !colorRegex.test(value),
     errorMessage: 'Invalid hex color'
-  }
+  },
 ]
 
-const validatorChecking = (value: string) => {
+const validatorChecking = (colorList: Array<string>, value: string) => {
   for (let i = 0; i < validatorList.length; i++) {
     if (validatorList[i].errorFunction(value)) {
       return validatorList[i].errorMessage
     }
+  }
+  if (colorList.includes(value)) {
+    return 'Color already registered'
   }
   return ''
 }
@@ -46,7 +49,7 @@ const App = () => {
       color: { value: string };
     };
 
-    let errorMessage: string = validatorChecking(target.color.value)
+    let errorMessage: string = validatorChecking(colorList, target.color.value)
 
     if (errorMessage) {
       setErrorInput(errorMessage);
