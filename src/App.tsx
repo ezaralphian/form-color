@@ -64,21 +64,20 @@ const App = () => {
 
 
   return (
-    <div>
-      <div>
-        <form onSubmit={addColor}>
-          <label >Add new color :</label>
-          <div className="input-wrapper" >
-            <input name="color" />
+    <div className="container" >
+      <form onSubmit={addColor}>
+        <label >Add new color :</label>
+        <div className="input-wrapper" >
+          <input name="color" />
 
-            {<small className="text-error" >{errorInput}</small>}
-          </div>
+          {<small className="text-error" >{errorInput}</small>}
+        </div>
 
-          <button>
-            Add
-          </button>
-        </form>
-      </div>
+        <button>
+          Add
+        </button>
+      </form>
+
       <ColorContent colorList={colorList} />
     </div>
   );
